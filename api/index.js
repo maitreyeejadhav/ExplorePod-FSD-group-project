@@ -3,16 +3,17 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const app = express();
+const jwt = require('jsonwebtoken');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 
-app.use(cors());
-app.use(express.json());
+const secret = 'asdfg345fghvbty67uhkjhg98s';  //created salt for jwt(jasonwebtoken)
 
-//const uri = "mongodb+srv://maitree:L2puz8cprbhK0VX8@cluster0.x6di5ls.mongodb.net/?retryWrites=true&w=majority";
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(express.json());
 
 mongoose.connect('mongodb+srv://maitree:L2puz8cprbhK0VX8@cluster0.x6di5ls.mongodb.net/?retryWrites=true&w=majority')
 
@@ -28,15 +29,24 @@ app.post('/register', async (req,res)=>{
         res.status(400).json(e);
     }
     
-    
-    
-})
+});
+
+app.post('/login', async (req,res) => {
+    const {username,password} = req.body;
+    const userDoc= await User.findOne({username});
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    if(passOk){
+        // user logged in
+        jwt.sign({username, id:userDoc._id}, secret, {}, (err,token) => {
+            if(err) throw err;
+            res.cookie('token', token).json('ok');
+        });
+        
+    }
+    else{
+        res.status(400).json('wrong credentials');
+    }
+});
 
 app.listen(4000);
 
-//L2puz8cprbhK0VX8
-
-//mongodb+srv://maitree:L2puz8cprbhK0VX8@cluster0.x6di5ls.mongodb.net/?retryWrites=true&w=majority
-
-
-//mongodb+srv://maitree:7lIiscvDttcegSTz@cluster0.x7t2hpu.mongodb.net/?retryWrites=true&w=majority
