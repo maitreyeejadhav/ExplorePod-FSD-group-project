@@ -7,7 +7,7 @@ export default function Header()
         <Link to="/" className="logo">Travelcations</Link>
         <nav>
           <Link to="/login">Login</Link>
-          <Link to="">Register</Link>
+          
         </nav>
       </header> 
     );
