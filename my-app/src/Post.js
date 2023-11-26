@@ -1,19 +1,24 @@
-export default function Post()
+import {formatISO9075} from "date-fns";
+import {Link} from "react-router-dom";
+
+export default function Post({_id,title,summary,cover,content,createdAt,author})
 {
     return(
-        <div className="post">
+      <div className="post">
       <div className="img">
-        <img src="https://miro.medium.com/v2/resize:fit:720/0*Cfo7lXZrDfE-Esv-"></img>
+        <Link to={'/post/${_id}'}>
+          <img src={'http://localhost:4000/'+cover} alt=""/> 
+        </Link>
       </div>
       <div className="text">
-        <h2>My First Solo Travel Abroad</h2>
+      <Link to={'/post/${_id}'}>
+        <h2>{title}</h2>
+      </Link>
       <p className="info">
-        <a className="author">Mansi Patil</a>
-        <time>2023-01-06 16:45</time>
+        <a className="author">{author.username}</a>
+        <time>{formatISO9075(new Date(createdAt))}</time>
       </p>
-      <p className="summary">
-        Traveling solo abroad was an exciting yet nerve-wracking prospect for me. The fear and uncertainty propagated by the media about the ongoing pandemic didn’t help either.
-        </p>
+      <p className="summary">{summary}</p>
       </div>
     </div>
 
