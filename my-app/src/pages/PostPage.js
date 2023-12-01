@@ -33,6 +33,7 @@ export default function PostPage() {
         <div
           style={{
             display: "flex",
+            alignItems: "center",
             marginLeft: "5px",
             gap: "2px",
             color: "orange",
