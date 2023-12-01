@@ -1,22 +1,14 @@
 import Post from "../Post";
-import {useEffect, useState} from "react";
-export default function HomePage(){
+import { useEffect, useState } from "react";
+export default function HomePage() {
   const [posts, setPosts] = useState([]);
-useEffect(()=>{
-  fetch('http://localhost:4000/post').then(response=>{
-    response.json().then(posts => {
-      setPosts(posts);
+  useEffect(() => {
+    fetch("http://localhost:4000/post").then((response) => {
+      response.json().then((posts) => {
+        setPosts(posts);
+      });
     });
-  });
-}, []);
- 
-    return(
-      <>
-       {posts.length > 0 && posts.map(post => (
-       <Post{...post}/>
-        
-       ))}
-     </>
-    );
-}
+  }, []);
 
+  return <>{posts.length > 0 && posts.map((post) => <Post {...post} />)}</>;
+}
