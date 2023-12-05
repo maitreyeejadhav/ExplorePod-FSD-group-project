@@ -127,8 +127,8 @@ app.get("/post", async (req, res) => {
   res.json(
     await Post.find()
       .populate("author", ["username"])
-      .sort({ createdAt: -1 })
-      .limit(20),
+      .sort({ rating: -1, createdAt: -1 })
+      .limit(10)
   );
 });
 
@@ -139,4 +139,4 @@ app.get("/post/:id", async (req, res) => {
 });
 
 app.listen(4000);
-//
+

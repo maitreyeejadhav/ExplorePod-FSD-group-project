@@ -41,7 +41,7 @@ export default function CreatePost() {
 					padding: "5px",
 				}
 			}>
-				Write a Title!
+				Write a Title:
 			</div>
 			<input
 				type="title"
@@ -56,7 +56,7 @@ export default function CreatePost() {
 					padding: "5px",
 				}
 			}>
-				Enter a Summary!
+				Enter a Summary:
 			</div>
 			<input
 				type="summary"
@@ -71,7 +71,7 @@ export default function CreatePost() {
 					padding: "5px",
 				}
 			}>
-				Select a Cover Image!
+				Select a Cover Image:
 			</div>
 			<input type="file" onChange={(ev) => setFiles(ev.target.files)}/>
 			{/* Input rating */}

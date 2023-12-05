@@ -36,7 +36,7 @@ export default function PostPage() {
             alignItems: "center",
             marginLeft: "5px",
             gap: "2px",
-            color: "orange",
+            color: "blue",
           }}
         >
           {postInfo.rating ? postInfo.rating : <div>Unrated</div>}
