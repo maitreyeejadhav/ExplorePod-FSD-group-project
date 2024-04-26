@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("http://13.60.23.147:4000/post").then((response) => {
+    fetch("http://13.60.66.108:4000/post").then((response) => {
       response.json().then((posts) => {
         setPosts(posts);
       });
