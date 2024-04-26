@@ -15,7 +15,7 @@ export default function Post({
     <div className="post">
       <div className="img">
         <Link to={`/post/${_id}`}>
-          <img src={"http://13.60.66.108:4000/" + cover} alt="" />
+          <img src={"http://ec2-13-60-66-108.eu-north-1.compute.amazonaws.com:4000/" + cover} alt="" />
         </Link>
       </div>
       <div className="text">

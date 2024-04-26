@@ -19,7 +19,7 @@ export default function CreatePost() {
 		data.set("file", files[0]);
 		data.set("rating", rating);
 		ev.preventDefault();
-		const response = await fetch("http://13.60.66.108:4000/post", {
+		const response = await fetch("http://ec2-13-60-66-108.eu-north-1.compute.amazonaws.com:4000/post", {
 			method: "POST",
 			body: data,
 			credentials: "include",
