@@ -18,7 +18,7 @@ const someOtherPlaintextPassword = "not_bacon";
 
 const secret = "asdfg345fghvbty67uhkjhg98s"; //created salt for jwt(jasonwebtoken)
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "http://explorepod-react-project.s3-website.eu-north-1.amazonaws.com/" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
